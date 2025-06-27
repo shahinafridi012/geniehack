@@ -1,0 +1,30 @@
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 8px 2px rgba(236, 72, 153, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 16px 4px rgba(236, 72, 153, 0.9);
+  }
+}
+
+@keyframes glowIcon {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(236, 72, 153, 0.6));
+  }
+}
+
+.animate-glow {
+  animation: glow 2.5s ease-in-out infinite;
+  position: relative;
+  z-index: 10;
+}
+
+.animate-glow-icon {
+  animation: glowIcon 3s ease-in-out infinite;
+}
+html {
+  scroll-behavior: smooth;
+}
