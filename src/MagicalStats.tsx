@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /* eslint-disable react-hooks/exhaustive-deps */
 import  { useEffect, useRef, useState } from "react";
 
@@ -59,7 +59,7 @@ const MagicalStats = () => {
 
   return (
     <div className="grid grid-cols-2 gap-6 text-left mb-8" ref={containerRef}>
-      {stats.map(({ number, label, color }, i) => (
+      {stats.map(({ label, color }, i) => (
         <div
           key={i}
           className="relative group rounded-lg p-2 overflow-hidden"

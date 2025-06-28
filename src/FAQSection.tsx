@@ -56,7 +56,9 @@ const FAQSection: React.FC = () => {
               </div>
 
               <div
-                ref={(el) => (contentRefs.current[index] = el)}
+                ref={(el) => {
+                  contentRefs.current[index] = el;
+                }}
                 style={{
                   maxHeight: isOpen
                     ? contentRefs.current[index]?.scrollHeight + "px"
