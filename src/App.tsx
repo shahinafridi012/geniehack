@@ -166,7 +166,7 @@ const App = () => {
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-1">
             <img
-              src="./../public/IMG_0055 (1).PNG"
+              src="/IMG_0055 (1).PNG"
               alt="Genie Hack Logo"
               className="h-8 w-auto md:h-10 rounded-full object-cover"
             />
@@ -293,7 +293,7 @@ const App = () => {
             }}
           >
             <img
-              src="../public/IMG_0060 (1).JPG"
+              src="/IMG_0060 (1).JPG"
               alt="Hero"
               className="rounded-xl shadow-lg w-full max-w-lg mx-auto"
             />
@@ -511,7 +511,7 @@ const App = () => {
 
           <div className="rounded-2xl overflow-hidden shadow-xl cursor-pointer magical-glow-softer lg:w-[450px] mx-auto">
             <img
-              src="../public/Purple Lines Modern Tech Company Team Flyer_20250629_190319_0000 (1).png"
+              src="/Purple Lines Modern Tech Company Team Flyer_20250629_190319_0000 (1).png"
               alt="Team working"
               className="w-full h-auto object-cover"
             />
@@ -600,7 +600,7 @@ const App = () => {
             <div className="flex items-center gap-2 mb-2">
               <div className="p-1 rounded-full">
                 <img
-                  src="../public/IMG_0055 (1).PNG"
+                  src="/IMG_0055 (1).PNG"
                   alt="Genie Hack Logo"
                   className="h-8 w-full rounded-full object-cover"
                 />
