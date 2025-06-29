@@ -4,20 +4,21 @@ import { Quote } from "lucide-react";
 const testimonials = [
   {
     name: "Alice Johnson",
-    role: "CEO, Company A",
-    text: "GenieHack transformed our online presence!",
+    role: "CEO, BrightWave Solutions",
+    text: "Working with GenieHack has been a game-changer for our brand. Their innovative strategies and creative execution significantly boosted our online engagement and conversions. Truly a top-notch team!",
   },
   {
     name: "Bob Smith",
-    role: "Marketing Head, Company B",
-    text: "The team delivered excellent results on time.",
+    role: "Head of Marketing, NexaTech",
+    text: "GenieHack exceeded our expectations by delivering quality work right on schedule. Their dedication and expertise in digital marketing helped us reach new customer segments effectively.",
   },
   {
     name: "Carol Lee",
-    role: "Product Manager, Company C",
-    text: "Highly recommend GenieHack for your business growth.",
+    role: "Product Manager, InnovateX",
+    text: "From start to finish, GenieHack demonstrated professionalism and a deep understanding of our needs. I highly recommend them to any business looking to grow and strengthen their online presence.",
   },
 ];
+
 
 const sparkleKeyframes = `
   @keyframes sparkleAnimation {
@@ -49,7 +50,7 @@ const TestimonialsSection: React.FC = () => {
       </style>
 
       <section className="bg-gradient-to-r from-[#3f0a79] to-[#3b0a66] py-20 px-4 text-white text-center">
-        <h2 className="text-4xl font-bold">
+        <h2 className="text-5xl font-bold">
           What Our <span className="text-pink-400">Clients</span> Say
         </h2>
         <p className="text-sm text-gray-200 mt-2 max-w-xl mx-auto">

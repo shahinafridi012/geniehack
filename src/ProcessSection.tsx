@@ -143,7 +143,7 @@ const ProcessSection = () => {
   return (
     <section className="bg-[#3d0074] text-white py-20 px-4">
       <div className="text-center">
-        <h2 className="text-4xl font-bold">
+        <h2 className="text-6xl font-bold">
           Our Proven <span className="text-pink-400">Process</span>
         </h2>
         <p className="mt-2 text-sm max-w-xl mx-auto">

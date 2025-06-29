@@ -164,18 +164,14 @@ const App = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2">
+          <a href="#hero" className="flex items-center gap-1">
+            <img
+              src="/src/assets/IMG_0055.PNG"
+              alt="Genie Hack Logo"
+              className="h-8 w-auto md:h-10 rounded-full object-cover"
+            />
             <span
-              className={`p-2 rounded-full transition-colors duration-300 ${
-                scrolled ? "bg-pink-400" : "bg-pink-500"
-              }`}
-            >
-              <FaBolt className="text-white text-sm" />
-            </span>
-            <span
-              className={`text-xl font-semibold transition-colors duration-300 ${
-                scrolled ? "text-pink-600" : "text-pink-300"
-              }`}
+              className={`text-xl font-semibold transition-all duration-300 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 bg-clip-text text-transparent`}
             >
               GenieHack
             </span>
@@ -247,9 +243,22 @@ const App = () => {
           <div className="flex-1">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
               Grow Your <br />
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent">
+              <motion.span
+                className="bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent"
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                style={{
+                  backgroundSize: "200% 200%", // Ensures the gradient has room to move
+                }}
+              >
                 Digital Business
-              </span>
+              </motion.span>
               <br />
               with GenieHack
             </h1>
@@ -259,22 +268,36 @@ const App = () => {
               the digital landscape, all in one place.
             </p>
             <div className="flex gap-4 flex-wrap">
-              <a href="#contact" className="bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 text-white px-6 py-3 rounded-lg font-semibold">
+              <a
+                href="#contact"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90 text-white px-6 py-3 rounded-lg font-semibold"
+              >
                 Get Started Today →
               </a>
-              <a href="https://github.com/shahinafridi012" className="border-white text-white hover:bg-white hover:text-black px-6 py-3 rounded-lg font-semibold">
+              <a
+                href="https://github.com/shahinafridi012"
+                className="border-white text-white hover:bg-white hover:text-black px-6 py-3 rounded-lg font-semibold"
+              >
                 View Our Work
               </a>
             </div>
           </div>
 
-          <div className="flex-1">
+          <motion.div
+            className="flex-1"
+            animate={{ y: [0, -20, 0] }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
             <img
-              src="https://i.ibb.co/kgwjkvNM/business-women-working.jpg"
+              src="https://i.ibb.co/r2vCtPXR/IMG-0060.jpg"
               alt="Hero"
               className="rounded-xl shadow-lg w-full max-w-lg mx-auto"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
       {/* service here */}
@@ -466,28 +489,29 @@ const App = () => {
         </div>
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
-         <div>
-  <h2 className="text-6xl font-bold">Why</h2>
-  <h1 className="text-6xl font-bold text-purple-400 inline-block">choose</h1>{" "}
-  <span className="text-white text-6xl">our section</span>
+          <div>
+            <h2 className="text-6xl  font-bold mb-3">
+              <span className="text-white">Why </span>
+              <span className="text-purple-400">choose </span>
+              <span className="text-white">our section</span>
+            </h2>
+            <p className="text-purple-200 mb-8 text-lg leading-relaxed">
+              At Genie Hack, we help businesses grow through smart design,
+              powerful content, and proven digital strategies. From websites to
+              social media — we turn your brand into a magnet for clients.
+            </p>
+            <MagicalStats />
+            <a
+              href="#contact"
+              className="bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 transition px-6 py-2 rounded-xl font-medium text-white"
+            >
+              Start Your Project →
+            </a>
+          </div>
 
-  <p className="text-purple-200 mb-8 text-lg leading-relaxed">
-    At Genie Hack, we help businesses grow through smart design, powerful
-    content, and proven digital strategies. From websites to social media — we
-    turn your brand into a magnet for clients.
-  </p>
-
-  <MagicalStats />
-
-  <a href="#contact"  className="bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 transition px-6 py-2 rounded-xl font-medium text-white">
-    Start Your Project →
-  </a>
-</div>
-
-
-          <div className="rounded-2xl overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105 cursor-pointer magical-glow-softer">
+          <div className="rounded-2xl overflow-hidden shadow-xl cursor-pointer magical-glow-softer lg:w-[450px] mx-auto">
             <img
-              src="https://i.ibb.co/kgwjkvNM/business-women-working.jpg"
+              src="https://i.ibb.co/93f4dSJD/Purple-Lines-Modern-Tech-Company-Team-Flyer-20250629-190319-0000-2.png"
               alt="Team working"
               className="w-full h-auto object-cover"
             />
@@ -574,11 +598,18 @@ const App = () => {
           {/* Brand & Social */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <div className="bg-gradient-to-br from-pink-400 to-purple-500 p-2 rounded-full text-white">
-                ⚡
+              <div className="p-1 rounded-full">
+                <img
+                  src="../src/assets/IMG_0055.PNG"
+                  alt="Genie Hack Logo"
+                  className="h-8 w-full rounded-full object-cover"
+                />
               </div>
-              <h3 className="text-white font-bold text-lg">GenieHack</h3>
+              <h3 className="font-bold text-lg bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 bg-clip-text text-transparent">
+                GenieHack
+              </h3>
             </div>
+
             <p className="text-sm">
               Transforming digital businesses with professional video editing,
               motion graphics, and branding services.

@@ -4,8 +4,8 @@ import  { useEffect, useRef, useState } from "react";
 
 const MagicalStats = () => {
   const stats = [
-    { number: 500, label: "Projects Completed", color: "text-purple-100" },
-    { number: 98, label: "Client Satisfaction %", color: "text-purple-100" },
+    { number: 144, label: "Projects Completed", color: "text-purple-100" },
+    { number: 99, label: "Client Satisfaction %", color: "text-purple-100" },
     { number: 24, label: "Support Hours", color: "text-orange-300" },
     { number: 5, label: "Years Experience", color: "text-sky-400" },
   ];

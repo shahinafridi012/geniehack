@@ -29,7 +29,7 @@ const FAQSection: React.FC = () => {
 
   return (
     <section className="bg-gradient-to-br from-[#3d0074] to-[#53177d] py-20 px-4 text-white text-center">
-      <h2 className="text-4xl font-bold">
+      <h2 className="text-5xl font-bold">
         Frequently Asked <span className="text-pink-400">Questions</span>
       </h2>
       <p className="text-sm text-gray-300 mt-2 max-w-xl mx-auto">
