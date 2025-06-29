@@ -166,7 +166,7 @@ const App = () => {
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-1">
             <img
-              src="/src/assets/IMG_0055.PNG"
+              src="https://i.ibb.co/yFpfdwz8/IMG-0055-1.png"
               alt="Genie Hack Logo"
               className="h-8 w-auto md:h-10 rounded-full object-cover"
             />
@@ -600,7 +600,7 @@ const App = () => {
             <div className="flex items-center gap-2 mb-2">
               <div className="p-1 rounded-full">
                 <img
-                  src="../src/assets/IMG_0055.PNG"
+                  src="https://i.ibb.co/yFpfdwz8/IMG-0055-1.png"
                   alt="Genie Hack Logo"
                   className="h-8 w-full rounded-full object-cover"
                 />
