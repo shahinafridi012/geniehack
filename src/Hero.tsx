@@ -38,7 +38,7 @@ export default function HeroSectionOne() {
 
       <div className="px-4 py-10 md:py-20">
         {/* Headline */}
-        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-white md:text-4xl lg:text-7xl">
+        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-4xl font-bold text-white md:text-4xl lg:text-7xl">
           {"Grow Your Business with GenieHack".split(" ").map((word, index) => (
             <motion.span
               key={index}
@@ -104,7 +104,7 @@ export default function HeroSectionOne() {
               playsInline
               className="aspect-[16/9] h-auto w-full object-cover"
             >
-              {/* <source src="/IMG_8621.MP4" type="video/mp4" /> */}
+              <source src="/IMG_8621 (1).mp4" type="video/mp4" />
               <source src="/IMG_8621 (1).mp4" type="video/webm" />
               Your browser does not support the video tag.
             </video>
