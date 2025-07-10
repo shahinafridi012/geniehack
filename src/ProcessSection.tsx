@@ -59,7 +59,6 @@ const timelineSteps = [
   },
 ];
 
-
 const cardItems = [
   {
     icon: LifeBuoy,
@@ -93,9 +92,6 @@ const cardItems = [
   },
 ];
 
-
-
-
 interface IconCardProps {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
   title: string;
@@ -111,7 +107,6 @@ const IconCard: React.FC<IconCardProps> = ({ icon: Icon, title, text }) => (
 );
 
 export default function ProcessSection() {
-  
   useEffect(() => {
     gsap.from(".iconstext", {
       y: 100,
@@ -172,19 +167,22 @@ export default function ProcessSection() {
 
   return (
     <section className="relative bg-black text-white py-16 px-6 overflow-hidden min-h-screen">
- 
- <AnimatedTimeline timelineSteps={timelineSteps} />
+      <AnimatedTimeline timelineSteps={timelineSteps} />
       {/* Icons Section */}
       <section className="icons-section w-full z-20 relative">
         <h2 className="iconstext pb-12 font-bold text-white text-5xl text-center max-w-4xl mx-auto">
-          Plenty of cool stuff
+          What Makes GenieHack Different
         </h2>
 
         <div className="flex justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-16 container w-full px-6">
             {cardItems.map((item, idx) => (
               <div className="icon-card flex justify-center" key={idx}>
-                <IconCard icon={item.icon} title={item.title} text={item.text} />
+                <IconCard
+                  icon={item.icon}
+                  title={item.title}
+                  text={item.text}
+                />
               </div>
             ))}
           </div>
