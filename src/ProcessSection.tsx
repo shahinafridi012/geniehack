@@ -1,217 +1,195 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from "react";
-import {
-  RefreshCw,
-  Lightbulb,
-  Globe,
-  FileText,
-  TrendingUp,
-  Users,
-  Video,
-  BarChart2,
-  TrendingUp as GrowthIcon,
-} from "lucide-react";
+import React, { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const steps = [
+gsap.registerPlugin(ScrollTrigger);
+
+import {
+  Lightbulb,
+  Pen,
+  Scissors,
+  Image as ImageIcon,
+  Send,
+  LifeBuoy,
+  RefreshCcw,
+  Cast,
+  Rocket,
+  Palette,
+  Smile,
+} from "lucide-react";
+import AnimatedTimeline from "./components/AnimatedTimeline";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const timelineSteps = [
   {
-    id: 1,
-    title: "Discovery & Consultation",
+    id: "01",
+    title: "Discover & Plan",
     description:
-      "Understand client’s business goals, target audience, and challenges. Analyze current online presence and competitors.",
-    icon: <RefreshCw className="w-5 h-5 text-white" />,
-    align: "left",
+      "We understand your brand, goals, and audience — then create a tailored digital growth roadmap.",
+    icon: Lightbulb,
   },
   {
-    id: 2,
-    title: "Customized Strategy Development",
+    id: "02",
+    title: "Design & Build",
     description:
-      "Create a tailored growth strategy based on client needs. Decide on services required: SEO, web design, social media, etc.",
-    icon: <Lightbulb className="w-5 h-5 text-white" />,
-    align: "right",
+      "From websites to social posts, our designers and developers craft assets that elevate your brand.",
+    icon: Pen,
   },
   {
-    id: 3,
-    title: "Brand & Website Enhancement",
+    id: "03",
+    title: "Edit & Animate",
     description:
-      "Optimize website design for mobile and usability. Improve speed, UX/UI, and implement SEO basics.",
-    icon: <Globe className="w-5 h-5 text-white" />,
-    align: "left",
+      "We produce high-quality video edits and motion graphics that keep your audience hooked.",
+    icon: Scissors,
   },
   {
-    id: 4,
-    title: "Content Creation & Marketing",
+    id: "04",
+    title: "Brand & Optimize",
     description:
-      "Create blogs, social media posts, and ads using storytelling and visuals to attract your audience.",
-    icon: <FileText className="w-5 h-5 text-white" />,
-    align: "right",
+      "We fine-tune your visuals, messaging, and presence to match your identity and engage your market.",
+    icon: ImageIcon,
   },
   {
-    id: 5,
-    title: "SEO & Online Visibility Boost",
+    id: "05",
+    title: "Launch & Grow",
     description:
-      "Use on-page and off-page SEO tactics including keyword research, backlinks, and local SEO.",
-    icon: <TrendingUp className="w-5 h-5 text-white" />,
-    align: "left",
-  },
-  {
-    id: 6,
-    title: "Social Media Management",
-    description:
-      "Handle all your social platforms, ensure regular posts, community engagement, and run paid campaigns.",
-    icon: <Users className="w-5 h-5 text-white" />,
-    align: "right",
-  },
-  {
-    id: 7,
-    title: "Video & Motion Graphics Production",
-    description:
-      "Create engaging videos, reels, and brand animations to elevate your storytelling.",
-    icon: <Video className="w-5 h-5 text-white" />,
-    align: "left",
-  },
-  {
-    id: 8,
-    title: "Performance Tracking & Analytics",
-    description:
-      "Track KPIs like traffic, leads, and conversions. Adjust strategy based on performance data.",
-    icon: <BarChart2 className="w-5 h-5 text-white" />,
-    align: "right",
-  },
-  {
-    id: 9,
-    title: "Continuous Support & Scaling",
-    description:
-      "Keep optimizing, provide regular updates, and scale successful campaigns to reach new heights.",
-    icon: <GrowthIcon className="w-5 h-5 text-white" />,
-    align: "left",
+      "We publish, manage, and scale your content across platforms for consistent growth and visibility.",
+    icon: Send,
   },
 ];
 
-const ProcessSection = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
-  const [progressHeight, setProgressHeight] = useState(0);
 
+const cardItems = [
+  {
+    icon: LifeBuoy,
+    title: "24/7 Client Support",
+    text: "Get instant help from our team — anytime, any day.",
+  },
+  {
+    icon: RefreshCcw,
+    title: "Flexible Revisions",
+    text: "Need changes? We offer quick and easy revisions until you’re satisfied.",
+  },
+  {
+    icon: Cast,
+    title: "Content Delivery on Time",
+    text: "We meet your deadlines without compromising quality.",
+  },
+  {
+    icon: Rocket,
+    title: "Growth-Focused Strategy",
+    text: "Every project is built with one goal — to grow your business.",
+  },
+  {
+    icon: Palette,
+    title: "Brand Consistency",
+    text: "We keep your visuals, tone, and content perfectly aligned.",
+  },
+  {
+    icon: Smile,
+    title: "Human-Centered Approach",
+    text: "You’re not just a project — you’re a partner. We listen and deliver.",
+  },
+];
+
+
+
+
+interface IconCardProps {
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  title: string;
+  text: string;
+}
+
+const IconCard: React.FC<IconCardProps> = ({ icon: Icon, title, text }) => (
+  <div className="flex flex-col items-center gap-4 max-w-xs px-6">
+    <Icon className="w-14 h-14 text-cyan-400" />
+    <h3 className="font-semibold text-white text-xl text-center">{title}</h3>
+    <p className="text-white/60 text-center text-sm">{text}</p>
+  </div>
+);
+
+export default function ProcessSection() {
+  
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute("data-step") || "0");
-            if (!visibleSteps.includes(index)) {
-              setVisibleSteps((prev) => [...prev, index]);
-            }
-          }
-        });
+    gsap.from(".iconstext", {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".iconstext",
+        start: "bottom center",
       },
-      { threshold: 0.4 }
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".icons-section",
+        start: "top center",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+
+    tl.fromTo(
+      ".icon-card:nth-child(1)",
+      { x: 150 },
+      { x: -135, ease: "power1.out" },
+      0
     );
-
-    if (containerRef.current) {
-      containerRef.current.querySelectorAll(".process-card").forEach((el) => {
-        observer.observe(el);
-      });
-    }
-
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.querySelectorAll(".process-card").forEach((el) => {
-          observer.unobserve(el);
-        });
-      }
-    };
-  }, [visibleSteps]);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const onScroll = () => {
-      const rect = container.getBoundingClientRect();
-      const visible = Math.max(0, window.innerHeight - rect.top);
-      const max = rect.height;
-      const progress = Math.min(max, Math.max(0, visible));
-      setProgressHeight(progress);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    return () => window.removeEventListener("scroll", onScroll);
+    tl.fromTo(
+      ".icon-card:nth-child(2)",
+      { y: 150 },
+      { y: -60, ease: "power1.out" },
+      0
+    );
+    tl.fromTo(
+      ".icon-card:nth-child(3)",
+      { x: -150 },
+      { x: 135, ease: "power1.out" },
+      0
+    );
+    tl.fromTo(
+      ".icon-card:nth-child(4)",
+      { x: 150 },
+      { x: -100, ease: "power1.out" },
+      0
+    );
+    tl.fromTo(
+      ".icon-card:nth-child(5)",
+      { y: -150 },
+      { y: 60, ease: "power1.out" },
+      0
+    );
+    tl.fromTo(
+      ".icon-card:nth-child(6)",
+      { x: -150 },
+      { x: 100, ease: "power1.out" },
+      0
+    );
   }, []);
 
   return (
-    <section className="bg-[#3d0074] text-white py-20 px-4">
-      <div className="text-center">
-        <h2 className="text-6xl font-bold">
-          Our Proven <span className="text-pink-400">Process</span>
+    <section className="relative bg-black text-white py-16 px-6 overflow-hidden min-h-screen">
+ 
+ <AnimatedTimeline timelineSteps={timelineSteps} />
+      {/* Icons Section */}
+      <section className="icons-section w-full z-20 relative">
+        <h2 className="iconstext pb-12 font-bold text-white text-5xl text-center max-w-4xl mx-auto">
+          Plenty of cool stuff
         </h2>
-        <p className="mt-2 text-sm max-w-xl mx-auto">
-          A streamlined workflow designed to elevate your brand and deliver measurable results.
-        </p>
-      </div>
 
-      <div ref={containerRef} className="relative max-w-5xl mx-auto mt-16" style={{ minHeight: "600px" }}>
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[4px] h-full bg-[#6a1b9a] rounded-full" />
-        <div
-          className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[4px] bg-pink-400 rounded-full transition-all duration-300"
-          style={{ height: progressHeight }}
-        />
-
-        {steps.map((step) => {
-          const isLeft = step.align === "left";
-          const isVisible = visibleSteps.includes(step.id);
-
-          return (
-            <div
-              key={step.id}
-              data-step={step.id}
-              className={`mb-16 flex ${
-                isLeft ? "justify-start" : "justify-end"
-              } relative process-card transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <div className="w-1/2 px-4">
-                <div className="bg-gradient-to-br from-[#5e2e91] to-[#4b1e7e] rounded-xl p-6 shadow-md relative">
-                  <div
-                    className={`absolute -top-6 ${
-                      isLeft ? "-left-6" : "-right-6"
-                    } bg-pink-500 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold`}
-                  >
-                    {step.id}
-                  </div>
-                  <div className="mb-4 flex justify-center">
-                    <div className="bg-pink-400 p-3 rounded-full animate-pulse-glow">
-                      {step.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-white font-semibold text-base text-center mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs text-center text-gray-100">{step.description}</p>
-                </div>
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-16 container w-full px-6">
+            {cardItems.map((item, idx) => (
+              <div className="icon-card flex justify-center" key={idx}>
+                <IconCard icon={item.icon} title={item.title} text={item.text} />
               </div>
-            </div>
-          );
-        })}
-      </div>
-
-      <style>{`
-        .animate-pulse-glow {
-          animation: pulseGlow 3s ease-in-out infinite;
-        }
-        @keyframes pulseGlow {
-          0%, 100% {
-            box-shadow: 0 0 6px rgba(236, 72, 153, 0.4), 0 0 12px rgba(236, 72, 153, 0.3);
-          }
-          50% {
-            box-shadow: 0 0 12px rgba(236, 72, 153, 0.6), 0 0 24px rgba(236, 72, 153, 0.4);
-          }
-        }
-      `}</style>
+            ))}
+          </div>
+        </div>
+      </section>
     </section>
   );
-};
-
-export default ProcessSection;
+}

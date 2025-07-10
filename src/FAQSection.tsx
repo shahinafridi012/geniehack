@@ -1,78 +1,91 @@
-import React, { useState, useRef } from "react";
+"use client";
+
+import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const faqs = [
   {
-    question: "How does GenieHack help grow my business?",
+    question: "Tell me about your agency?",
     answer:
-      "We provide expert developers, SEO specialists, and marketing strategists to elevate your brand online.",
+      "We’re a full-service digital agency focused on design, content, and growth — all under one roof.",
   },
   {
-    question: "What services do you offer?",
+    question: "Tell me about your content plan?",
     answer:
-      "We offer website design, SEO optimization, social media management, video editing, and more.",
+      "We analyze your existing content, identify your niche and offer a comprehensive content plan catering to your personal brand.",
   },
   {
-    question: "How long does a typical project take?",
+    question: "What services will you provide?",
     answer:
-      "Project duration varies, but most projects complete within 4-8 weeks depending on complexity.",
+      "Video editing, branding, social media management, motion graphics, web development — all tailored to your goals.",
+  },
+  {
+    question: "What if I don’t get the results?",
+    answer:
+      "We track performance and adjust your strategy until we meet your goals. We're here for the long run.",
+  },
+  {
+    question: "Why wouldn’t I hire a freelancer?",
+    answer:
+      "With GenieHack, you get a full team — strategists, designers, editors — all working together for your growth.",
+  },
+  {
+    question: "Tell me about your workflow?",
+    answer:
+      "We start with research, then plan, create, revise, and launch. It’s seamless, efficient, and stress-free.",
   },
 ];
 
 const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const toggleIndex = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+  const toggle = (index: number) => {
+    setOpenIndex(prev => (prev === index ? null : index));
   };
 
   return (
-    <section className="bg-gradient-to-br from-[#3d0074] to-[#53177d] py-20 px-4 text-white text-center">
-      <h2 className="text-5xl font-bold">
-        Frequently Asked <span className="text-pink-400">Questions</span>
+    <section className="bg-black text-white py-20 px-6">
+      <h2 className="text-center text-4xl sm:text-5xl font-bold mb-10">
+        Questions You May <span className="text-purple-400">Ask</span>
       </h2>
-      <p className="text-sm text-gray-300 mt-2 max-w-xl mx-auto">
-        Have questions? We’ve got answers. Here are some of the most common
-        inquiries we receive.
-      </p>
 
-      <div className="max-w-2xl mx-auto mt-12 bg-gradient-to-br from-[#5e2e91] to-[#4b1e7e] border border-purple-500 rounded-xl overflow-hidden text-left">
+      <div className="grid gap-4 md:grid-cols-2 max-w-5xl mx-auto">
         {faqs.map((item, index) => {
           const isOpen = openIndex === index;
+
           return (
             <div
               key={index}
-              className="border-b border-purple-600 last:border-b-0 cursor-pointer select-none"
-              onClick={() => toggleIndex(index)}
+              className="bg-[#111111] border border-gray-800 rounded-xl overflow-hidden transition hover:border-purple-600"
             >
-              <div className="flex justify-between items-center p-5">
-                <h3 className="font-semibold text-sm">{item.question}</h3>
+              <button
+                onClick={() => toggle(index)}
+                className="w-full flex justify-between items-center px-6 py-5 text-left group"
+              >
+                <span className="font-medium text-sm sm:text-base text-white group-hover:text-purple-400">
+                  {item.question}
+                </span>
                 <ChevronDown
-                  className={`transition-transform duration-300 w-5 h-5 ${
-                    isOpen ? "rotate-180" : ""
+                  className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${
+                    isOpen ? "rotate-180 text-purple-400" : ""
                   }`}
                 />
-              </div>
+              </button>
 
-              <div
-                ref={(el) => {
-                  contentRefs.current[index] = el;
-                }}
-                style={{
-                  maxHeight: isOpen
-                    ? contentRefs.current[index]?.scrollHeight + "px"
-                    : "0px",
-                  opacity: isOpen ? 1 : 0,
-                  padding: isOpen ? "0 1.25rem 1.25rem" : "0 1.25rem 0",
-                  transition:
-                    "max-height 0.4s ease, opacity 0.3s ease 0.1s, padding 0.3s ease",
-                  overflow: "hidden",
-                }}
-                className="text-sm text-gray-200"
-              >
-                {item.answer}
-              </div>
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="px-6 pb-5 text-sm text-gray-300"
+                  >
+                    {item.answer}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           );
         })}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import emailjs from "emailjs-com";
 
 export default function TransformSection() {
+
   const [showMessageModal, setShowMessageModal] = useState(false);
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [sending, setSending] = useState(false);
@@ -85,35 +86,50 @@ export default function TransformSection() {
   };
 
   return (
-    <section className="bg-gradient-to-br from-[#4b1e7e] to-[#752f91] text-white text-center py-20 px-6 relative overflow-hidden">
+    <section className="bg-black text-white text-center pb-10 px-6 relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-pink-400 rounded-full filter blur-3xl opacity-30 animate-pulse mix-blend-screen"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full filter blur-3xl opacity-30 animate-pulse mix-blend-screen"
       ></div>
 
       <h2 className="relative text-4xl md:text-5xl font-bold z-10">
         Ready to Transform Your <br />
-        <span className="text-pink-400 magical-glow">Digital Presence?</span>
+        <span className=" ">Digital Presence?</span>
       </h2>
-      <p className="text-gray-200 mt-4 max-w-2xl mx-auto z-10 relative">
+      <p className="text-gray-300 mt-4 max-w-2xl mx-auto z-10 relative">
         Join hundreds of satisfied clients who have grown their businesses with
         GenieHack. Let's make your digital dreams a reality!
       </p>
 
-      <div className="mt-8 flex justify-center gap-4 flex-wrap z-10 relative">
-        <button
-          onClick={() => setShowMessageModal(true)}
-          className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 px-6 py-3 rounded-lg font-semibold text-white shadow-lg transition-all"
-        >
-          Get Started Now →
-        </button>
-        <button
-          onClick={() => setShowScheduleModal(true)}
-          className="bg-black hover:bg-gray-900 px-6 py-3 rounded-lg font-semibold text-white shadow"
-        >
-          Schedule a Call
-        </button>
-      </div>
+   <div className="mt-8 flex justify-center gap-6 flex-wrap z-10 relative">
+  <button
+    onClick={() => setShowMessageModal(true)}
+    className="relative inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-gray-900 via-gray-800 to-black text-pink-400 font-semibold shadow-lg transition-transform duration-300 hover:scale-105 hover:from-gray-700 hover:via-gray-600 hover:to-gray-900 focus:outline-none focus:ring-4 focus:ring-pink-500"
+  >
+    Get Started Now
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="ml-3 h-5 w-5 text-pink-400"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  </button>
+
+  <button
+    onClick={() => setShowScheduleModal(true)}
+    className="relative inline-flex items-center justify-center px-8 py-3 rounded-full bg-black text-gray-300 font-semibold shadow-md transition-colors duration-300 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-pink-500"
+  >
+    Schedule a Call
+  </button>
+</div>
+
+
 
       {/* Message Modal */}
       {showMessageModal && (
@@ -151,7 +167,7 @@ export default function TransformSection() {
             />
             <button
               type="submit"
-              className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 rounded-md transition disabled:opacity-50"
+              className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 rounded-md transition disabled:opacity-50"
               disabled={sending}
             >
               {sending ? "Sending..." : "Send Message"}
@@ -195,7 +211,7 @@ export default function TransformSection() {
             />
             <button
               type="submit"
-              className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 rounded-md transition disabled:opacity-50"
+              className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 rounded-md transition disabled:opacity-50"
               disabled={sending}
             >
               {sending ? "Sending..." : "Request Schedule"}
@@ -211,43 +227,43 @@ export default function TransformSection() {
       )}
 
       <style>{`
-        .magical-glow {
-          position: relative;
-          z-index: 1;
-          text-shadow:
-            0 0 5px #f472b6,
-            0 0 10px #f43f5e,
-            0 0 20px #db2777,
-            0 0 30px #be185d,
-            0 0 40px #9d174d;
-          animation: glowPulse 3s ease-in-out infinite;
-        }
-        @keyframes glowPulse {
-          0%, 100% {
-            text-shadow:
-              0 0 5px #f472b6,
-              0 0 10px #f43f5e,
-              0 0 20px #db2777,
-              0 0 30px #be185d,
-              0 0 40px #9d174d;
-          }
-          50% {
-            text-shadow:
-              0 0 10px #f472b6,
-              0 0 20px #f43f5e,
-              0 0 30px #db2777,
-              0 0 40px #be185d,
-              0 0 50px #9d174d;
-          }
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.8s ease forwards;
-        }
-      `}</style>
+    .magical-glow {
+      position: relative;
+      z-index: 1;
+      text-shadow:
+        0 0 5px #f472b6,
+        0 0 10px #f43f5e,
+        0 0 20px #db2777,
+        0 0 30px #be185d,
+        0 0 40px #9d174d;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow:
+          0 0 5px #f472b6,
+          0 0 10px #f43f5e,
+          0 0 20px #db2777,
+          0 0 30px #be185d,
+          0 0 40px #9d174d;
+      }
+      50% {
+        text-shadow:
+          0 0 10px #f472b6,
+          0 0 20px #f43f5e,
+          0 0 30px #db2777,
+          0 0 40px #be185d,
+          0 0 50px #9d174d;
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease forwards;
+    }
+  `}</style>
     </section>
   );
 }

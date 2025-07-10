@@ -1,136 +1,92 @@
-import React from "react";
-import { Quote } from "lucide-react";
+import { InfiniteMovingCards } from "./components/infinite-moving-cards";
+import { motion } from "framer-motion";
+import { PointerHighlight } from "./components/pointer-highlight";
 
 const testimonials = [
   {
-    name: "Alice Johnson",
-    role: "CEO, BrightWave Solutions",
-    text: "Working with GenieHack has been a game-changer for our brand. Their innovative strategies and creative execution significantly boosted our online engagement and conversions. Truly a top-notch team!",
+    quote:
+      "Genie Hack took the time to understand our business goals before jumping into design or development. They weren’t just building a website—they were building a digital experience that aligned with our brand and truly resonated with our customers. We’ve seen a 40% increase in conversions since launch.",
+    name: "Emily Carter",
+    title: "Marketing Manager at BrightPath Solutions",
   },
   {
-    name: "Bob Smith",
-    role: "Head of Marketing, NexaTech",
-    text: "GenieHack exceeded our expectations by delivering quality work right on schedule. Their dedication and expertise in digital marketing helped us reach new customer segments effectively.",
+    quote:
+      "We hired Genie Hack to help with our product launch, expecting just a landing page. What we got was a fully responsive, beautifully animated interface backed by lightning-fast performance. Their attention to detail and communication throughout the project was top-tier.",
+    name: "Rahim Chowdhury",
+    title: "Founder & CEO, TechNova Ltd.",
   },
   {
-    name: "Carol Lee",
-    role: "Product Manager, InnovateX",
-    text: "From start to finish, GenieHack demonstrated professionalism and a deep understanding of our needs. I highly recommend them to any business looking to grow and strengthen their online presence.",
+    quote:
+      "After struggling with SEO and slow site speed for months, Genie Hack stepped in and completely revamped our technical stack. They improved loading time by 65%, optimized every asset, and got us to the top 3 rankings on Google for our main keywords. The results were beyond what we hoped for.",
+    name: "Jenna Park",
+    title: "E-commerce Director at ZenCart",
+  },
+  {
+    quote:
+      "The Genie Hack team felt like an extension of our own. From project kickoff to final delivery, they were always transparent, proactive, and highly skilled. They transformed our dashboard UX into something our users now rave about—smooth, intuitive, and polished.",
+    name: "Omar Faruk",
+    title: "Product Manager at FlowSpace",
+  },
+  {
+    quote:
+      "What really stood out was their storytelling through design. We wanted something visually impactful but not overwhelming—and they delivered exactly that. Our brand now looks premium, trustworthy, and modern. Couldn't have asked for a better creative partner.",
+    name: "Sophia Martinez",
+    title: "Creative Lead at Lumen Creative Agency",
   },
 ];
 
 
-const sparkleKeyframes = `
-  @keyframes sparkleAnimation {
-    0%, 100% { opacity: 0; transform: scale(1) translateX(0); }
-    50% { opacity: 1; transform: scale(1.4) translateX(2px); }
-  }
-`;
-
-const fadeInUpKeyframes = `
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-`;
-
-const TestimonialsSection: React.FC = () => {
+const TestimonialsSection = () => {
   return (
-    <>
-      {/* Inject keyframes styles */}
-      <style>
-        {sparkleKeyframes}
-        {fadeInUpKeyframes}
-      </style>
+    <div className="relative h-[46rem] w-full bg-black overflow-hidden px-4 sm:px-6 flex flex-col items-center justify-center">
+      {/* Glowing background blur */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-40 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-blue-500 via-purple-600 to-pink-500 opacity-30 blur-3xl" />
+      </div>
 
-      <section className="bg-gradient-to-r from-[#3f0a79] to-[#3b0a66] py-20 px-4 text-white text-center">
-        <h2 className="text-5xl font-bold">
-          What Our <span className="text-pink-400">Clients</span> Say
-        </h2>
-        <p className="text-sm text-gray-200 mt-2 max-w-xl mx-auto">
-          Don’t just take our word for it. Here’s what our satisfied clients have to
-          say about working with GenieHack
-        </p>
+      {/* Animated Title */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="text-white text-6xl sm:text-4xl font-bold mb-4 text-center"
+>
+  <span className="inline">What Our </span>
+  <PointerHighlight containerClassName="inline-block">
+    <span className="inline">Clients</span>
+  </PointerHighlight>
+  <span className="inline"> say</span>
+</motion.div>
 
-        <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch max-w-6xl mx-auto mt-12">
-          {testimonials.map((item, index) => (
-            <div
-              key={index}
-              className="relative bg-gradient-to-br from-[#5e2e91] to-[#4b1e7e] border border-purple-500 rounded-xl p-6 text-left w-full md:w-1/3
-                hover:scale-[1.03] transition-transform duration-300 ease-in-out"
-              style={{
-                animationName: "fadeInUp",
-                animationDuration: "0.6s",
-                animationFillMode: "forwards",
-                animationTimingFunction: "ease-out",
-                animationDelay: `${index * 150}ms`,
-                opacity: 0,
-                transform: "translateY(20px)",
-              }}
-            >
-              {/* Stars with sparkle */}
-              <div className="flex mb-4 space-x-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="relative w-5 h-5 text-yellow-400 fill-current"
-                    style={{ filter: "drop-shadow(0 0 4px #facc15)" }}
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z" />
-                    </svg>
-                    {/* Sparkle */}
-                    <span
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: "50%",
-                        width: "6px",
-                        height: "6px",
-                        backgroundColor: "white",
-                        borderRadius: "9999px",
-                        opacity: 0,
-                        animationName: "sparkleAnimation",
-                        animationDuration: "2s",
-                        animationIterationCount: "infinite",
-                        animationTimingFunction: "ease-in-out",
-                        animationDelay: `${i * 300}ms`,
-                        filter: "drop-shadow(0 0 4px #fff)",
-                        transformOrigin: "center",
-                        transformBox: "fill-box",
-                        pointerEvents: "none",
-                        translate: "-50% 0",
-                      }}
-                    ></span>
-                  </div>
-                ))}
-              </div>
 
-              {/* Quote */}
-              <p className="text-sm italic mb-6 text-gray-100">"{item.text}"</p>
 
-              {/* Author */}
-              <p className="text-sm font-semibold">{item.name}</p>
-              <p className="text-xs text-gray-300">{item.role}</p>
 
-              {/* Quotation Icon */}
-              <Quote className="absolute top-4 right-4 w-8 h-8 text-purple-400 opacity-20" />
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
+      {/* Description below title */}
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        className="text-gray-300 text-base sm:text-lg mb-10 max-w-2xl text-center"
+      >
+        Hear directly from those who experienced our commitment to quality,
+        creativity, and results. These words reflect the impact we strive to
+        make every day.
+      </motion.p>
+
+      {/* Infinite Moving Cards with edge mask */}
+      <div className="relative w-full max-w-6xl">
+        {/* Fading edge effect */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
+
+        <InfiniteMovingCards
+          items={testimonials}
+          direction="right"
+          speed="slow"
+        
+        />
+      </div>
+    </div>
   );
 };
 
