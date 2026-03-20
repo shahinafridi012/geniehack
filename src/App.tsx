@@ -10,7 +10,6 @@ import { FaBolt, FaCode, FaPalette, FaPlay, FaUsers } from "react-icons/fa";
 //   FaChartLine,
 //   FaMagic,
 // } from "react-icons/fa";
-import MagicalStats from "./MagicalStats";
 import ProcessSection from "./ProcessSection";
 import TestimonialsSection from "./TestimonialsSection";
 import FAQSection from "./FAQSection";
@@ -20,6 +19,7 @@ import Navbar from "./Navbar";
 import Goal from "./goal";
 import Service from "./Service";
 import Footer from "./Footer";
+import FounderSection from "./Founder";
 const services = [
   {
     icon: <FaPlay />,
@@ -152,90 +152,11 @@ const App = () => {
             />
           ))}
         </div>
+        <FounderSection/>
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
-          <div>
-            <h2 className="text-5xl sm:text-6xl font-bold mb-3 magical-glow-soft">
-              <span className="text-white">Why </span>
-              <span className="text-purple-400">choose </span>
-              <span className="text-white">our section</span>
-            </h2>
-            <p className="text-gray-300 mb-8 text-lg leading-relaxed">
-              At Genie Hack, we help businesses grow through smart design,
-              powerful content, and proven digital strategies. From websites to
-              social media — we turn your brand into a magnet for clients.
-            </p>
-            <MagicalStats />
-            <a
-              href="#contact"
-              className="relative bg-gradient-to-r from-cyan-400 to-blue-600 hover:opacity-90 transition px-6 py-2 rounded-xl font-medium text-white "
-            >
-              Start Your Project →
-            </a>
-          </div>
+   
 
-          <div className="rounded-2xl overflow-hidden shadow-xl cursor-pointer magical-glow-softer lg:w-[450px] mx-auto">
-            <img
-              src="/Purple Lines Modern Tech Company Team Flyer_20250629_190319_0000 (1).png"
-              alt="Team working"
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        </div>
-
-        <style>{`
-    .magical-sparkle {
-      position: absolute;
-      background: radial-gradient(circle, #fef3c7 0%, #f59e0b 70%);
-      border-radius: 9999px;
-      animation-name: sparkleFloat;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-    }
-
-    @keyframes sparkleFloat {
-      0%, 100% {
-        transform: translateY(0) scale(1);
-        opacity: 0.4;
-      }
-      50% {
-        transform: translateY(-12px) scale(1.3);
-        opacity: 0.2;
-      }
-    }
-
-    .magical-glow-soft {
-      text-shadow:
-        0 0 4px #a855f7aa,
-        0 0 8px #d946ef88;
-      transition: text-shadow 0.3s ease;
-    }
-
-    .magical-glow-softer {
-      text-shadow:
-        0 0 2px #c084fc55,
-        0 0 5px #e0aaff44;
-      transition: text-shadow 0.3s ease;
-    }
-
-    .magical-shimmer::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -50%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
-      transform: skewX(-20deg);
-      animation: shimmerMove 2.5s infinite;
-      pointer-events: none;
-      border-radius: 0.75rem;
-    }
-
-    @keyframes shimmerMove {
-      0% { left: -50%; }
-      100% { left: 150%; }
-    }
-  `}</style>
+    
       </section>
       {/* frequenly */}
       <section id="faq">
