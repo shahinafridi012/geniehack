@@ -45,7 +45,7 @@ export default function LeadershipSection() {
           <div className="relative">
             <div className="w-full h-auto rounded-3xl overflow-hidden border border-white/10">
               <img
-                src="/YasinAhmedmunna.jpg" // 🔁 your image
+                src="/funder.jpeg" // 🔁 your image
                 className="w-full h-full object-cover"
               />
             </div>
@@ -95,37 +95,37 @@ export default function LeadershipSection() {
           </div>
 
           {/* RIGHT TEAM LIST */}
-        <div className="grid md:grid-cols-2 gap-6">
-  {team.map((member, i) => (
-    <motion.div
-      key={i}
-      whileHover={{ x: 6 }}
-      className="flex items-center gap-4 group relative"
-    >
-      {/* 🔥 LEFT LINE (modern touch) */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-gradient-to-r from-purple-500/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
+          <div className="grid md:grid-cols-2 gap-6">
+            {team.map((member, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ x: 6 }}
+                className="flex items-center gap-4 group relative"
+              >
+                {/* 🔥 LEFT LINE (modern touch) */}
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-[1px] bg-gradient-to-r from-purple-500/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
 
-      {/* AVATAR */}
-      <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/10 flex-shrink-0">
-        <img
-          src={member.img}
-          className="w-full h-full object-cover"
-        />
-      </div>
+                {/* AVATAR */}
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border border-white/10 flex-shrink-0">
+                  <img
+                    src={member.img}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-      {/* TEXT */}
-      <div>
-        <h4 className="text-sm md:text-base font-medium text-white group-hover:text-purple-400 transition">
-          {member.name}
-        </h4>
+                {/* TEXT */}
+                <div>
+                  <h4 className="text-sm md:text-base font-medium text-white group-hover:text-purple-400 transition">
+                    {member.name}
+                  </h4>
 
-        <p className="text-xs md:text-sm text-gray-400">
-          {member.role}
-        </p>
-      </div>
-    </motion.div>
-  ))}
-</div>
+                  <p className="text-xs md:text-sm text-gray-400">
+                    {member.role}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
